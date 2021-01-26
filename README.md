@@ -1,0 +1,1 @@
+# nuxt_simple_project
