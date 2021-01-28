@@ -4,6 +4,18 @@
       <h2 class="title">Name: {{ user.name }}</h2>
       <hr />
       <h4 class="title">Email: {{ user.email }}</h4>
+      <hr />
+      <div>
+        <nuxt-link :to="'/users/' + user.id + '/albums'" no-prefetch
+          >Albums</nuxt-link
+        >
+        <nuxt-link :to="'/users/' + user.id + '/todos'" no-prefetch
+          >Todos</nuxt-link
+        >
+        <nuxt-link :to="'/users/' + user.id + '/posts'" no-prefetch
+          >Posts</nuxt-link
+        >
+      </div>
     </div>
   </div>
 </template>

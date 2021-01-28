@@ -3,6 +3,9 @@
     <h1 class="title">
       About Page
     </h1>
+    <div class="p-2 mt-2 mb-2 bg-info rounded text-white">
+      Its a some static page that was prerendered on server side
+    </div>
     <p>
       Elit eveniet necessitatibus rerum ipsam maxime! Debitis vero voluptates
       magni quidem ad Quod tenetur facere sit mollitia vel. Ducimus quam?.

@@ -4,6 +4,11 @@
       <h2 class="title">{{ post.title }}</h2>
       <hr />
       <div>{{ post.body }}</div>
+      <div>
+        <nuxt-link :to="'/users/show/' + post.userId" no-prefetch
+          >User info</nuxt-link
+        >
+      </div>
     </div>
   </div>
 </template>

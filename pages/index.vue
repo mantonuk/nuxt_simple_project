@@ -1,10 +1,6 @@
 <template>
-  <div class="container">
-    <div>
-      <h1 class="title">
-        Home Page
-      </h1>
-    </div>
+  <div class="bg-light p-4 rounded mt-4 border border-secondary text-center">
+    <p>Some intro here</p>
   </div>
 </template>
 
