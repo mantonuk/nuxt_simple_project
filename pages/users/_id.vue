@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1>User info</h1>
+  <div class="bg-light p-4 rounded mt-4 border border-secondary">
     <div>
       <h2 class="title">Name: {{ user.name }}</h2>
       <hr />

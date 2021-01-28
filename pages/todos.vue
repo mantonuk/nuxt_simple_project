@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="bg-light p-4 rounded mt-4 border border-secondary">
     <h1 class="title">
       Todos Page
     </h1>
