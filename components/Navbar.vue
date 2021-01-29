@@ -22,13 +22,22 @@
             >About</nuxt-link
           >
         </li>
-        <li class="nav-item" v-if="hasToken">
+        <li class="nav-item">
           <nuxt-link
             active-class="active"
             class="nav-link"
-            to="/todos"
+            to="/albums"
             no-prefetch
-            >Todo's</nuxt-link
+            >Albums</nuxt-link
+          >
+        </li>
+        <li class="nav-item">
+          <nuxt-link
+            active-class="active"
+            class="nav-link"
+            to="/photos"
+            no-prefetch
+            >Photos</nuxt-link
           >
         </li>
         <li class="nav-item">

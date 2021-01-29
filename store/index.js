@@ -8,7 +8,6 @@ export const mutations = {
     state.token = token;
   },
   setCurrentUser(state, user) {
-    console.log("setCurrentUser");
     state.currentUser = user;
   },
   clearToken(state) {

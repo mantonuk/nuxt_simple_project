@@ -1,18 +1,22 @@
 <template>
   <div class="bg-light p-4 rounded mt-4 border border-secondary">
-    <div>
+    <div class="position-relative">
+      <div class="position-absolute d-inline top-0" style="right:0;">
+        <nuxt-link class="btn btn-primary btn-sm" to="/users/profile" no-prefetch
+          >Your Profile</nuxt-link
+        >
+      </div>
       <h2 class="title">Name: {{ user.name }}</h2>
-      <hr />
-      <h4 class="title">Email: {{ user.email }}</h4>
+      <p><small>Email: {{ user.email }}</small></p>
       <hr />
       <div>
-        <nuxt-link :to="'/users/' + user.id + '/albums'" no-prefetch
+        <nuxt-link class="btn btn-secondary btn-sm" :to="'/users/' + user.id + '/albums'" no-prefetch
           >Albums</nuxt-link
         >
-        <nuxt-link :to="'/users/' + user.id + '/todos'" no-prefetch
+        <nuxt-link class="btn btn-secondary btn-sm" :to="'/users/' + user.id + '/todos'" no-prefetch
           >Todos</nuxt-link
         >
-        <nuxt-link :to="'/users/' + user.id + '/posts'" no-prefetch
+        <nuxt-link class="btn btn-secondary btn-sm" :to="'/users/' + user.id + '/posts'" no-prefetch
           >Posts</nuxt-link
         >
       </div>
