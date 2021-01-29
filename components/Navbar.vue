@@ -63,7 +63,15 @@
           >
         </li>
         <li class="nav-item" v-else>
-          <span class="pr-2">Hi, {{ username }}</span> |
+          <span class="pr-2">
+          <nuxt-link
+            active-class="active"
+            class="text-white"
+            to="/users/profile"
+            no-prefetch
+            ><u>Hi, {{ username }}</u></nuxt-link
+          >
+          </span> | 
           <a
             class="nav-link text-white d-inline"
             href="#"
