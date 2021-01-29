@@ -1,7 +1,7 @@
 <template>
   <div class="bg-light p-4 rounded mt-4 border border-secondary">
     <h1 class="title">
-      User Profile
+      User Profile - file
     </h1>
     <hr />
     <div>
