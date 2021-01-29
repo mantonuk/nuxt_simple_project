@@ -7,7 +7,20 @@
         </h1>
         <form @submit.prevent="loginUser">
           <div class="form-group">
-            <p><small>Dummy login page. It means that click on button just set token to true</small></p>
+            <p>
+              <small
+                >Dummy login page. It means that click on button just set token
+                to true</small
+              >
+            </p>
+            <p>
+            <select v-model="selected">
+              <option v-for="user in users" v-bind:value="user.id">
+                {{ user.email }}
+              </option>
+            </select>
+            </p>
+
             <button class="btn btn-primary">Login</button>
           </div>
         </form>
@@ -22,11 +35,22 @@
 <script>
 export default {
   layout: "empty",
+  data: () => ({
+    selected: null,
+  }),
+  computed: {
+    users() {
+      return this.$store.getters["users/users"];
+    }
+  },
   methods: {
     loginUser() {
-      this.$store.dispatch("login");
+      this.$store.dispatch("login", {user_id: this.selected});
       this.$router.push("/");
     }
+  },
+  mounted() {
+    this.$store.dispatch("users/fetch");
   }
 };
 </script>

@@ -13,7 +13,7 @@
 export default {
   async fetch({ store, params }) {
     if (store.getters["posts/posts"].length === 0) {
-      await store.dispatch("posts/fetch", { user_id: params.id });
+      await store.dispatch("posts/fetch", { user_id: params.user_id });
     }
   },
   computed: {

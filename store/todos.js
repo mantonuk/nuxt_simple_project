@@ -5,11 +5,14 @@ export const state = () => ({
 export const mutations = {
   setTodos(state, todos) {
     state.todos = todos;
+  },
+  toggle(state, todo) {
+    todo.completed = !todo.completed;
   }
 };
 
 export const actions = {
-  async fetch({commit}) {
+  async fetch({ commit }) {
     const todos = await this.$axios.$get(
       "https://jsonplaceholder.typicode.com/todos"
     );

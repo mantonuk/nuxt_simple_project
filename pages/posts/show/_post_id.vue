@@ -16,11 +16,11 @@
 <script>
 export default {
   validate({ params }) {
-    return /^\d+$/.test(params.id);
+    return /^\d+$/.test(params.post_id);
   },
   async asyncData({ $axios, params }) {
     const post = await $axios.$get(
-      `https://jsonplaceholder.typicode.com/posts/${params.id}`
+      `https://jsonplaceholder.typicode.com/posts/${params.post_id}`
     );
     return { post };
   }

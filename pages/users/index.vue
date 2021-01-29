@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     openUser(user) {
-      this.$router.push(`/users/${user.id}`);
+      this.$router.push(`/users/show/${user.id}`);
     }
   }
 };

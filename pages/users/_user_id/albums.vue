@@ -4,7 +4,7 @@
       Albums of current User
     </h1>
     <div v-for="album in albums" :key="album.id">
-      <a href="#" @click.prevent="openUser(album)">{{ album.title }}</a>
+      <a href="#" @click.prevent="openAlbum(album)">{{ album.title }}</a>
     </div>
   </div>
 </template>
@@ -13,7 +13,7 @@
 export default {
   async fetch({ store, params }) {
     if (store.getters["albums/albums"].length === 0) {
-      await store.dispatch("albums/fetch", { user_id: params.id });
+      await store.dispatch("albums/fetch", { user_id: params.user_id });
     }
   },
   computed: {
