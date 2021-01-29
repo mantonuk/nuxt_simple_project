@@ -7,27 +7,24 @@
       Data from axios were prerendered on server side
     </div>
     <div v-for="album in albums">
-      <a :href="'albums/view/' + album.id" @click.prevent="openPost(album)">{{ album.title }}</a>
+      <nuxt-link
+        :to="'/albums/' + album.id"
+        no-prefetch
+        >{{ album.title }}</nuxt-link
+      >
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  async fetch({ store }) {
-    if (store.getters["albums/albums"].length === 0) {
-      await store.dispatch("albums/fetch", {});
-    }
-  },
-  computed: {
-    albums() {
-      return this.$store.getters["albums/albums"];
-    }
-  },
-  methods: {
-    openalbum(album) {
-      this.$router.push(`/albums/view/${album.id}`);
-    }
+  data: () => ({
+    albums: []
+  }),
+  async fetch() {
+    this.albums = await this.$axios.$get(
+      "https://jsonplaceholder.typicode.com/albums"
+    );
   }
 };
 </script>
