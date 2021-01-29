@@ -1,37 +1,35 @@
 export const state = () => ({
   token: null,
-  currentUserId: null
+  currentUser: null
 });
 
 export const mutations = {
   setToken(state, token) {
     state.token = token;
   },
-  setCurrentUserId(state, user_id) {
-    state.currentUserId = user_id;
+  setCurrentUser(state, user) {
+    state.currentUser = user;
   },
   clearToken(state) {
     state.token = null;
   },
-  clearCurrentUserId(state) {
-    state.currentUserId = null;
+  clearCurrentUser(state) {
+    state.currentUser = null;
   }
 };
 
 export const actions = {
-  login({ commit }, { user_id }) {
-    console.log("action.login");
+  login({ commit }, { user }) {
     commit("setToken", "someTokenHere");
-    commit("setCurrentUserId", user_id);
+    commit("setCurrentUser", user);
   },
   logout({ commit }) {
-    console.log("action.logout");
     commit("clearToken");
-    commit("clearCurrentUserId");
+    commit("clearCurrentUser");
   }
 };
 
 export const getters = {
   hasToken: state => !!state.token,
-  currentUserId: state => state.currentUserId
+  currentUser: state => state.currentUser
 };

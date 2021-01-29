@@ -5,20 +5,21 @@
         <h1 class="title">
           Login Page
         </h1>
-        <form @submit.prevent="loginUser">
+        <p>
+          <small
+            >Dummy login page. It means that click on button just set token to
+            true</small
+          >
+        </p>
+        <LoaderDots v-if="loading" />
+        <form @submit.prevent="loginUser" v-else>
           <div class="form-group">
             <p>
-              <small
-                >Dummy login page. It means that click on button just set token
-                to true</small
-              >
-            </p>
-            <p>
-            <select v-model="selected">
-              <option v-for="user in users" v-bind:value="user.id">
-                {{ user.email }}
-              </option>
-            </select>
+              <select v-model="selected">
+                <option v-for="user in users" v-bind:value="user.id">
+                  ID: [{{ user.id }}] {{ user.name }}, {{ user.email }}
+                </option>
+              </select>
             </p>
 
             <button class="btn btn-primary">Login</button>
@@ -33,10 +34,16 @@
 </template>
 
 <script>
+import LoaderDots from "@/components/LoaderDots";
+
 export default {
   layout: "empty",
+  components: {
+    LoaderDots
+  },
   data: () => ({
     selected: null,
+    loading: true
   }),
   computed: {
     users() {
@@ -45,12 +52,20 @@ export default {
   },
   methods: {
     loginUser() {
-      this.$store.dispatch("login", {user_id: this.selected});
-      this.$router.push("/");
+      const user = this.users.find(user => user.id === this.selected);
+      this.$store.dispatch("login", { user });
+      this.$router.push("/users/profile");
     }
   },
   mounted() {
-    this.$store.dispatch("users/fetch");
+    //emulate waiting
+    setTimeout(() => {
+      this.$store.dispatch("users/fetch", {
+        callback: () => {
+          this.loading = false;
+        }
+      });
+    }, 1000);
   }
 };
 </script>

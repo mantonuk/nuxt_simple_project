@@ -63,8 +63,13 @@
           >
         </li>
         <li class="nav-item" v-else>
-          <span class="pr-2">Hi, Username</span> |
-          <a class="nav-link text-white d-inline" href="#" @click.prevent="logout()">Logout</a>
+          <span class="pr-2">Hi, {{ username }}</span> |
+          <a
+            class="nav-link text-white d-inline"
+            href="#"
+            @click.prevent="logout()"
+            >Logout</a
+          >
         </li>
       </ul>
     </div>
@@ -77,11 +82,13 @@ export default {
   computed: {
     hasToken() {
       return this.$store.getters.hasToken;
+    },
+    username() {
+      return this.$store.getters.currentUser.name;
     }
   },
   methods: {
     logout() {
-      console.log("logout");
       this.$store.dispatch("logout");
       this.$router.push("/");
     }
