@@ -79,7 +79,7 @@
         </div>
       </div>
       <div class="float-right w-25 pl-4" v-if="!edit">
-        <a href="#" @click.prevent="edit = true">Edit</a>
+        <a class="btn btn-primary" href="#" @click.prevent="edit = true">Edit</a>
       </div>
       <div class="clearfix"></div>
     </div>
@@ -125,12 +125,19 @@ export default {
           text: "Profile has been saved",
           css: "bg-success"
         };
+
+        const users = [...this.$store.getters["users/users"]];
+        const index = users.findIndex(item => item.id === user.id);
+
+        if (index !== -1) {
+          users.splice(index, 1, user);
+          this.$store.commit("users/setUsers", users);
+        }
       } else {
         this.message = {
           text: "Something went wrong",
           css: "bg-danger"
         };
-        console.log("Something went wrong");
       }
 
       setTimeout(() => {
