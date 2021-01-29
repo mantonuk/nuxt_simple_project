@@ -53,8 +53,12 @@ export default {
   methods: {
     loginUser() {
       const user = this.users.find(user => user.id === this.selected);
-      this.$store.dispatch("login", { user });
-      this.$router.push("/users/profile");
+      if (user) {
+        this.$store.dispatch("login", { user });
+        this.$router.push("/users/profile");
+      } else {
+        console.log("Wrong User");
+      }
     }
   },
   mounted() {

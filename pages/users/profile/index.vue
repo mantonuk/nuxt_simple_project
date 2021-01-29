@@ -4,11 +4,24 @@
       User Profile
     </h1>
     <hr />
-    {{ user }}
     <div>
-      <div class="float-left w-75">
-        <div v-if="edit">
-          <div class="input-group">
+      <div
+        class="rounded p-2 mb-2 bg-primary text-white"
+        :class="message.css"
+        v-if="message.text"
+      >
+        {{ message.text }}
+      </div>
+      <div class="position-relative float-left w-75" :class="{ 'w-100': edit }">
+        <div
+          class="d-flex w-100 h-100 position-absolute justify-content-center align-items-center"
+          v-if="loading"
+          style="z-index:1;"
+        >
+          <LoaderDots />
+        </div>
+        <div v-if="edit" :class="{ 'edit-opacity': loading }">
+          <div class="input-group mb-2">
             <div class="input-group-prepend">
               <span class="input-group-text" id="email">Email</span>
             </div>
@@ -20,7 +33,7 @@
               v-model="formData.email"
             />
           </div>
-          <div class="input-group">
+          <div class="input-group mb-2">
             <div class="input-group-prepend">
               <span class="input-group-text" id="name">Name</span>
             </div>
@@ -32,7 +45,7 @@
               v-model="formData.name"
             />
           </div>
-          <div class="input-group">
+          <div class="input-group mb-2">
             <div class="input-group-prepend">
               <span class="input-group-text" id="username">Username</span>
             </div>
@@ -44,9 +57,13 @@
               v-model="formData.username"
             />
           </div>
-          <div class="input-group">
-            <div class="btn btn-primary">Save</div>
-            <div class="btn btn-secondary" @click="edit = false">Cancel</div>
+          <div class="input-group d-flex justify-content-center">
+            <div class="btn btn-primary mr-1" @click.prevent="updateUser">
+              Save
+            </div>
+            <div class="btn btn-secondary ml-1" @click="edit = false">
+              Cancel
+            </div>
           </div>
         </div>
         <div v-else>
@@ -61,7 +78,7 @@
           </p>
         </div>
       </div>
-      <div class="float-right w-25 pl-4">
+      <div class="float-right w-25 pl-4" v-if="!edit">
         <a href="#" @click.prevent="edit = true">Edit</a>
       </div>
       <div class="clearfix"></div>
@@ -74,8 +91,8 @@ export default {
   middleware: ["auth"],
   data: () => ({
     edit: false,
-    loading: false
-    /*formData: {}*/
+    loading: false,
+    message: {}
   }),
   computed: {
     user() {
@@ -85,8 +102,50 @@ export default {
       return { ...this.user };
     }
   },
-  methods: {}
+  methods: {
+    async updateUser() {
+      this.loading = true;
+      const user = await this.$axios.$put(
+        `https://jsonplaceholder.typicode.com/users/${this.user.id}/`,
+        {
+          ...this.user,
+          ...{
+            email: this.formData.email,
+            name: this.formData.name,
+            username: this.formData.username
+          }
+        }
+      );
+
+      this.loading = false;
+      if (user) {
+        this.$store.commit("setCurrentUser", user);
+        this.edit = false;
+        this.message = {
+          text: "Profile has been saved",
+          css: "bg-success"
+        };
+      } else {
+        this.message = {
+          text: "Something went wrong",
+          css: "bg-danger"
+        };
+        console.log("Something went wrong");
+      }
+
+      setTimeout(() => {
+        this.message = {};
+      }, 5000);
+    }
+  }
 };
 </script>
 
-<style></style>
+<style scoped>
+.input-group-prepend .input-group-text {
+  min-width: 150px;
+}
+.edit-opacity {
+  opacity: 0.2;
+}
+</style>
