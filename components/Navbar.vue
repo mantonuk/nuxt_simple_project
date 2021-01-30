@@ -31,7 +31,7 @@
             >Albums</nuxt-link
           >
         </li>
-        <li class="nav-item">
+        <li class="nav-item" v-if=0>
           <nuxt-link
             active-class="active"
             class="nav-link"

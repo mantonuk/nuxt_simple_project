@@ -4,10 +4,8 @@
       <h2 class="title">{{ post.title }}</h2>
       <hr />
       <div>{{ post.body }}</div>
-      <div>
-        <nuxt-link :to="'/users/show/' + post.userId" no-prefetch
-          >User info</nuxt-link
-        >
+      <div class="mt-2 text-center">
+        <nuxt-link :to="'/users/show/' + post.userId" class="btn btn-secondary btn-sm">User info</nuxt-link>
       </div>
     </div>
   </div>

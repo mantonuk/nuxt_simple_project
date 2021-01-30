@@ -1,33 +1,20 @@
 <template>
-  <div class="bg-light p-4 rounded mt-4 border border-secondary">
-    <h1 class="title">
-      Posts Page
-    </h1>
-    <div class="p-2 mt-2 mb-2 bg-info rounded text-white">
-      Data from axios were prerendered on server side
-    </div>
-    <div v-for="post in posts">
-      <a :href="'posts/show/' + post.id" @click.prevent="openPost(post)">{{ post.title }}</a>
-    </div>
-  </div>
+  <PostsGridComponent title="Posts" :data="posts" />
 </template>
 
 <script>
+import PostsGridComponent from "@/components/Posts";
 export default {
-  async fetch({ store }) {
-    if (store.getters["posts/posts"].length === 0) {
-      await store.dispatch("posts/fetch");
-    }
+  components: {
+    PostsGridComponent
   },
-  computed: {
-    posts() {
-      return this.$store.getters["posts/posts"];
-    }
-  },
-  methods: {
-    openPost(post) {
-      this.$router.push(`/posts/show/${post.id}`);
-    }
+  data: () => ({
+    posts: []
+  }),
+  async fetch() {
+    this.posts = await this.$axios.$get(
+      "https://jsonplaceholder.typicode.com/posts"
+    );
   }
 };
 </script>

@@ -1,6 +1,7 @@
 export const state = () => ({
   token: null,
-  currentUser: null
+  currentUser: null,
+  data: {}
 });
 
 export const mutations = {
@@ -15,6 +16,9 @@ export const mutations = {
   },
   clearCurrentUser(state) {
     state.currentUser = null;
+  },
+  setData(state, {key, data}) {
+    state.data[key] = data;
   }
 };
 

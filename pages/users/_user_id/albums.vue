@@ -1,31 +1,59 @@
 <template>
-  <div class="bg-light p-4 rounded mt-4 border border-secondary">
-    <h1 class="title">
-      Albums of current User
-    </h1>
-    <div class="p-2 mt-2 mb-2 bg-info rounded text-white">
-      Data from axios were prerendered on server side
-    </div>
-    <div v-for="album in albums">
-      <nuxt-link :to="'/albums/' + album.id" no-prefetch>{{
-        album.title
-      }}</nuxt-link>
-    </div>
-  </div>
+  <AlbumsGridComponent
+    title="Albums of current User123123"
+    :data="albums"
+    :isAuthor="isAuthor"
+    @destroy="destroyAlbum"
+    @update="updateAlbum"
+  />
 </template>
 
 <script>
+import AlbumsGridComponent from "@/components/Albums";
+
 export default {
   data: () => ({
     albums: []
   }),
+  validate({ params }) {
+    return /^\d+$/.test(params.user_id);
+  },
+  components: {
+    AlbumsGridComponent
+  },
   async fetch() {
-    const {user_id} = this.$route.params;
+    const { user_id } = this.$route.params;
     this.albums = await this.$axios.$get(
       "https://jsonplaceholder.typicode.com/users/" + user_id + "/albums/"
     );
+  },
+  computed: {
+    isAuthor() {
+      const user = this.$store.getters["currentUser"];
+      if (user && this.$route.params.user_id) {
+        return user.id === parseInt(this.$route.params.user_id);
+      }
+      return false;
+    }
+  },
+  methods: {
+    getElementIndex(album) {
+      return this.albums.findIndex(item => item.id === album.id);
+    },
+    destroyAlbum(album) {
+      const index = this.getElementIndex(album);
+
+      if (index !== -1) {
+        this.albums.splice(index, 1);
+      }
+    },
+    updateAlbum(album) {
+      const index = this.getElementIndex(album);
+
+      if (index !== -1) {
+        this.albums.splice(index, 1, album);
+      }
+    }
   }
 };
 </script>
-
-<style></style>

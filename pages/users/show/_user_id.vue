@@ -10,13 +10,13 @@
       <p><small>Email: {{ user.email }}</small></p>
       <hr />
       <div>
-        <nuxt-link class="btn btn-secondary btn-sm" :to="'/users/' + user.id + '/albums'" no-prefetch
+        <nuxt-link class="btn btn-secondary btn-sm" :to="'/users/' + user.id + '/albums'"
           >Albums</nuxt-link
         >
-        <nuxt-link class="btn btn-secondary btn-sm" :to="'/users/' + user.id + '/todos'" no-prefetch
+        <nuxt-link class="btn btn-secondary btn-sm" :to="'/users/' + user.id + '/todos'"
           >Todos</nuxt-link
         >
-        <nuxt-link class="btn btn-secondary btn-sm" :to="'/users/' + user.id + '/posts'" no-prefetch
+        <nuxt-link class="btn btn-secondary btn-sm" :to="'/users/' + user.id + '/posts'"
           >Posts</nuxt-link
         >
       </div>

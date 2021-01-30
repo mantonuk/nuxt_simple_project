@@ -87,7 +87,13 @@
 </template>
 
 <script>
+
+import LoaderDots from "@/components/LoaderDots";
+
 export default {
+  components: {
+     LoaderDots 
+  },
   middleware: ["auth"],
   data: () => ({
     edit: false,
