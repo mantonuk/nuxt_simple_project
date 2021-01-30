@@ -1,7 +1,7 @@
 <template>
   <div class="bg-light p-4 rounded mt-4 border border-secondary">
     <h1 class="title">
-      User Profile - file
+      User Profile
     </h1>
     <hr />
     <div>
@@ -76,10 +76,17 @@
           <p class="mb-1">
             <span class="font-weight-bold">username:</span> {{ user.username }}
           </p>
+          <hr />
+          <ProfileButtonsComponent :user_id="user.id" />
         </div>
       </div>
-      <div class="float-right w-25 pl-4" v-if="!edit">
+      <div class="float-right w-25 pl-4 text-right" v-if="!edit">
         <a class="btn btn-primary" href="#" @click.prevent="edit = true">Edit</a>
+        <nuxt-link
+          class="btn btn-secondary"
+          :to="'/users/show/' + user.id" 
+          >View</nuxt-link
+        >
       </div>
       <div class="clearfix"></div>
     </div>
@@ -89,10 +96,12 @@
 <script>
 
 import LoaderDots from "@/components/LoaderDots";
+import ProfileButtonsComponent from "@/components/Users/ProfileButtonsComponent";
 
 export default {
   components: {
-     LoaderDots 
+     LoaderDots,
+     ProfileButtonsComponent
   },
   middleware: ["auth"],
   data: () => ({

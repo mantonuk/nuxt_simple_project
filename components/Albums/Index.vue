@@ -23,9 +23,6 @@ export default {
   name: "AlbumsGridComponent",
   props: ["title", "data", "isAuthor"],
   methods: {
-    open(album) {
-      this.$router.push(`/albums/${album.id}`);
-    },
     async update(album) {
       this.loading = true;
 
@@ -51,6 +48,6 @@ export default {
       this.$emit("destroy", album);
       this.loading = false;
     }
-  }
+  },
 };
 </script>

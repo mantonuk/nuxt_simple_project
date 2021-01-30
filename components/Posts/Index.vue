@@ -19,7 +19,7 @@
           :entity="post"
           @update="update(post)"
           @destroy="destroy(post)"
-          v-if="isAuthor === true"
+          v-if="isAuthor"
         />
       </div>
     </div>

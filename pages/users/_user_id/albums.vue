@@ -1,6 +1,6 @@
 <template>
   <AlbumsGridComponent
-    title="Albums of current User123123"
+    title="Albums"
     :data="albums"
     :isAuthor="isAuthor"
     @destroy="destroyAlbum"
@@ -9,6 +9,7 @@
 </template>
 
 <script>
+
 import AlbumsGridComponent from "@/components/Albums";
 
 export default {

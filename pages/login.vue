@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container mt-4">
+    <div class="container mt-4" style="max-width:400px;">
       <div class="bg-light rounded p-4 text-center">
         <h1 class="title">
           Login Page
@@ -14,15 +14,15 @@
         <LoaderDots v-if="loading" />
         <form @submit.prevent="loginUser" v-else>
           <div class="form-group">
-            <p>
-              <select v-model="selected">
+            <div class="input-group mb-3">
+              <select class="custom-select" v-model="selected">
+                <option selected value="">Choose...</option>
                 <option v-for="user in users" v-bind:value="user.id">
                   ID: [{{ user.id }}] {{ user.name }}, {{ user.email }}
                 </option>
               </select>
-            </p>
-
-            <button class="btn btn-primary">Login</button>
+            </div>
+            <button class="btn btn-primary" :class="{'btn-secondary disabled': !selected}">Login</button>
           </div>
         </form>
         <div class="mt-2">
