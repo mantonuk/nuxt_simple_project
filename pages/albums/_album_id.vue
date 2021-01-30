@@ -3,9 +3,6 @@
 </template>
 
 <script>
-
-import AlbumViewComponent from "@/components/Albums/View";
-
 export default {
   components: {
     AlbumViewComponent

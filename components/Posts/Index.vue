@@ -27,15 +27,13 @@
 </template>
 
 <script>
-import LoaderDots from "@/components/LoaderDots";
-import EntityActions from "@/components/EntityActions";
 
 export default {
   name: "PostsGridComponent",
-  components: {
-    LoaderDots,
-    EntityActions
-  },
+  /*components: {*/
+    /*LoaderDots,*/
+    /*EntityActions*/
+  /*},*/
   props: ["title", "data", "isAuthor"],
   data: () => ({
     loading: false

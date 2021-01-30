@@ -34,8 +34,6 @@
 </template>
 
 <script>
-import LoaderDots from "@/components/LoaderDots";
-
 export default {
   layout: "empty",
   components: {

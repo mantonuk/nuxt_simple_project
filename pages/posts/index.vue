@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import PostsGridComponent from "@/components/Posts";
 export default {
   components: {
     PostsGridComponent

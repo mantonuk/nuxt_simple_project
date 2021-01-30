@@ -20,8 +20,6 @@
 </template>
 
 <script>
-import ProfileButtonsComponent from "@/components/Users/ProfileButtonsComponent";
-
 export default {
   components: {
     ProfileButtonsComponent

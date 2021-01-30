@@ -95,9 +95,6 @@
 
 <script>
 
-import LoaderDots from "@/components/LoaderDots";
-import ProfileButtonsComponent from "@/components/Users/ProfileButtonsComponent";
-
 export default {
   components: {
      LoaderDots,

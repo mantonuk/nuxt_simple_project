@@ -10,8 +10,6 @@
 
 <script>
 
-import AlbumsGridComponent from "@/components/Albums";
-
 export default {
   data: () => ({
     albums: []
