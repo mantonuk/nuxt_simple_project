@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  name: "EntityActions",
+  name: "EntityActionsComponent",
   props: ['entity']
 };
 </script>

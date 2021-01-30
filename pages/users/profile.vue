@@ -18,7 +18,7 @@
           v-if="loading"
           style="z-index:1;"
         >
-          <LoaderDots />
+          <LoaderDotsComponent />
         </div>
         <div v-if="edit" :class="{ 'edit-opacity': loading }">
           <div class="input-group mb-2">
@@ -77,14 +77,14 @@
             <span class="font-weight-bold">username:</span> {{ user.username }}
           </p>
           <hr />
-          <ProfileButtonsComponent :user_id="user.id" />
+          <UserProfileButtonsComponent :user_id="user.id" />
         </div>
       </div>
       <div class="float-right w-25 pl-4 text-right" v-if="!edit">
-        <a class="btn btn-primary" href="#" @click.prevent="edit = true">Edit</a>
-        <nuxt-link
-          class="btn btn-secondary"
-          :to="'/users/show/' + user.id" 
+        <a class="btn btn-primary" href="#" @click.prevent="edit = true"
+          >Edit</a
+        >
+        <nuxt-link class="btn btn-secondary" :to="'/users/show/' + user.id"
           >View</nuxt-link
         >
       </div>
@@ -94,11 +94,13 @@
 </template>
 
 <script>
+import LoaderDotsComponent from "@/components/LoaderDotsComponent";
+import UserProfileButtonsComponent from "@/components/Users/UserProfileButtonsComponent";
 
 export default {
   components: {
-     LoaderDots,
-     ProfileButtonsComponent
+    LoaderDotsComponent,
+    UserProfileButtonsComponent
   },
   middleware: ["auth"],
   data: () => ({

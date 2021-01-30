@@ -11,7 +11,7 @@
             true</small
           >
         </p>
-        <LoaderDots v-if="loading" />
+        <LoaderDotsComponent v-if="loading" />
         <form @submit.prevent="loginUser" v-else>
           <div class="form-group">
             <div class="input-group mb-3">
@@ -34,10 +34,11 @@
 </template>
 
 <script>
+import LoaderDotsComponent from '@/components/LoaderDotsComponent';
 export default {
   layout: "empty",
   components: {
-    LoaderDots
+   LoaderDotsComponent 
   },
   data: () => ({
     selected: null,

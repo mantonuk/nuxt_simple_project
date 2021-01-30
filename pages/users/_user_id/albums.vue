@@ -1,5 +1,5 @@
 <template>
-  <AlbumsGridComponent
+  <AlbumsListComponent
     title="Albums"
     :data="albums"
     :isAuthor="isAuthor"
@@ -10,6 +10,8 @@
 
 <script>
 
+import AlbumsListComponent from "@/components/Albums/AlbumsListComponent";
+
 export default {
   data: () => ({
     albums: []
@@ -18,7 +20,7 @@ export default {
     return /^\d+$/.test(params.user_id);
   },
   components: {
-    AlbumsGridComponent
+    AlbumsListComponent
   },
   async fetch() {
     const { user_id } = this.$route.params;

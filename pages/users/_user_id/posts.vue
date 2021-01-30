@@ -1,5 +1,5 @@
 <template>
-  <PostsGridComponent
+  <PostsListComponent
     title="Posts"
     :data="posts"
     :isAuthor="isAuthor"
@@ -9,9 +9,11 @@
 </template>
 
 <script>
+import PostsListComponent from "@/components/Posts/PostsListComponent";
+
 export default {
   components: {
-    PostsGridComponent
+    PostsListComponent
   },
   data: () => ({
     posts: []

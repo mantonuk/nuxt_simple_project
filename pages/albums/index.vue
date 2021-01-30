@@ -1,14 +1,17 @@
 <template>
-  <AlbumsGridComponent title="Albums Page" :data="albums" />
+  <AlbumsListComponent title="Albums Page" :data="albums" />
 </template>
 
 <script>
+
+import AlbumsListComponent from "@/components/Albums/AlbumsListComponent";
+
 export default {
   components: {
-    AlbumsGridComponent
+    AlbumsListComponent
   },
   data: () => ({
-    albums : []
+    albums: []
   }),
   async fetch() {
     this.albums = await this.$axios.$get(

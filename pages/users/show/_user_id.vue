@@ -14,15 +14,16 @@
         <small>Email: {{ user.email }}</small>
       </p>
       <hr />
-      <ProfileButtonsComponent :user_id="user.id" />
+      <UserProfileButtonsComponent :user_id="user.id" />
     </div>
   </div>
 </template>
 
 <script>
+import UserProfileButtonsComponent from "@/components/Users/UserProfileButtonsComponent";
 export default {
   components: {
-    ProfileButtonsComponent
+    UserProfileButtonsComponent
   },
   validate({ params }) {
     return /^\d+$/.test(params.user_id);

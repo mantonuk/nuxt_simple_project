@@ -9,7 +9,7 @@
         v-if="loading_add"
         style="z-index:1;"
       >
-        <LoaderDots />
+        <LoaderDotsComponent />
       </div>
       <div class="input-group mb-3" :class="{ 'd-opacity': loading_add }">
         <input
@@ -52,7 +52,12 @@
 </template>
 
 <script>
+import LoaderDotsComponent from "@/components/LoaderDotsComponent";
+
 export default {
+  components: {
+    LoaderDotsComponent,
+  },
   data: () => ({
     loading_add: false,
     loading_update: false,

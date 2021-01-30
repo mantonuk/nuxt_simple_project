@@ -5,7 +5,7 @@
       v-if="loading"
       style="z-index:1;"
     >
-      <LoaderDots />
+      <LoaderDotsComponent />
     </div>
     <div class="p-4" :class="{ 'd-opacity': loading }">
       <h1 class="title">
@@ -15,7 +15,7 @@
         <a :href="'posts/' + post.id" @click.prevent="open(post)">{{
           post.title
         }}</a>
-        <EntityActions
+        <EntityActionsComponent
           :entity="post"
           @update="update(post)"
           @destroy="destroy(post)"
@@ -27,13 +27,15 @@
 </template>
 
 <script>
+import LoaderDotsComponent from "@/components/LoaderDotsComponent";
+import EntityActionsComponent from "@/components/EntityActionsComponent";
 
 export default {
-  name: "PostsGridComponent",
-  /*components: {*/
-    /*LoaderDots,*/
-    /*EntityActions*/
-  /*},*/
+  name: "PostsListComponent",
+  components: {
+    LoaderDotsComponent,
+    EntityActionsComponent
+  },
   props: ["title", "data", "isAuthor"],
   data: () => ({
     loading: false

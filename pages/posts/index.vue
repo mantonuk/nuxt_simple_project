@@ -1,11 +1,14 @@
 <template>
-  <PostsGridComponent title="Posts" :data="posts" />
+  <PostsListComponent title="Posts" :data="posts" />
 </template>
 
 <script>
+
+import PostsListComponent from "@/components/Posts/PostsListComponent";
+
 export default {
   components: {
-    PostsGridComponent
+   PostsListComponent 
   },
   data: () => ({
     posts: []
